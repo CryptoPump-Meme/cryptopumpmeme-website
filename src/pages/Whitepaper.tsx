@@ -155,13 +155,13 @@ export default function Whitepaper() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-950 via-purple-950/20 to-gray-950">
       {/* Header */}
-      <header className="sticky top-0 z-50 glass-effect border-b border-purple-500/20">
+      <header className="sticky top-0 z-50 glass-effect border-b border-purple-500/20 backdrop-blur-xl">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Button
               variant="ghost"
               onClick={() => navigate('/')}
-              className="text-purple-400 hover:text-purple-300"
+              className="text-purple-400 hover:text-purple-300 hover:scale-105 transition-all"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Home
@@ -171,7 +171,7 @@ export default function Whitepaper() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-12 sm:py-20 relative overflow-hidden">
         <div className="absolute inset-0 cyber-grid opacity-30" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -180,53 +180,59 @@ export default function Whitepaper() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 bg-purple-500/20 px-4 py-2 rounded-full mb-6 glass-effect">
+            <motion.div 
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-purple-500/20 px-4 py-2 rounded-full mb-6 glass-effect"
+            >
               <Sparkles className="w-4 h-4 text-yellow-400" />
               <span className="text-sm font-semibold">Version 1.0 | 2025</span>
-            </div>
-            <h1 className="text-5xl lg:text-7xl font-black mb-6">
+            </motion.div>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6">
               <span className="gradient-text neon-glow">CPM Whitepaper</span>
             </h1>
-            <p className="text-2xl text-purple-300 mb-8 font-bold">
+            <p className="text-xl sm:text-2xl text-purple-300 mb-8 font-bold">
               The Meme That Thinks Before It Pumps
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="glass-effect p-4 rounded-lg">
-                <div className="text-sm text-gray-400 mb-1">Token</div>
-                <div className="text-xl font-black gradient-text">CPM</div>
-              </div>
-              <div className="glass-effect p-4 rounded-lg">
-                <div className="text-sm text-gray-400 mb-1">Supply</div>
-                <div className="text-xl font-black gradient-text">400B</div>
-              </div>
-              <div className="glass-effect p-4 rounded-lg">
-                <div className="text-sm text-gray-400 mb-1">Networks</div>
-                <div className="text-xl font-black gradient-text">ETH+BASE</div>
-              </div>
-              <div className="glass-effect p-4 rounded-lg">
-                <div className="text-sm text-gray-400 mb-1">Sections</div>
-                <div className="text-xl font-black gradient-text">8</div>
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+              {[
+                { label: 'Token', value: 'CPM' },
+                { label: 'Supply', value: '400B' },
+                { label: 'Networks', value: 'ETH+BASE' },
+                { label: 'Sections', value: '8' },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="glass-effect p-3 sm:p-4 rounded-lg hover:scale-105 transition-transform"
+                >
+                  <div className="text-xs sm:text-sm text-gray-400 mb-1">{stat.label}</div>
+                  <div className="text-lg sm:text-xl font-black gradient-text">{stat.value}</div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Contract Address */}
-      <section className="py-8">
+      <section className="py-6 sm:py-8">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="glass-effect p-6 rounded-2xl border-2 border-purple-500/30"
+            className="glass-effect p-4 sm:p-6 rounded-2xl border-2 border-purple-500/30"
           >
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div>
-                <div className="text-sm text-gray-400 mb-1">Contract Address (ETH + BASE)</div>
-                <div className="text-lg font-mono text-purple-300">0x2db4c12c7c7224a3655b5a2945c0128a27e76bfa</div>
+              <div className="w-full md:w-auto text-center md:text-left">
+                <div className="text-xs sm:text-sm text-gray-400 mb-1">Contract Address (ETH + BASE)</div>
+                <div className="text-sm sm:text-lg font-mono text-purple-300 break-all">0x2db4c12c7c7224a3655b5a2945c0128a27e76bfa</div>
               </div>
-              <Button variant="outline" className="border-purple-500 text-purple-300">
+              <Button variant="outline" className="border-purple-500 text-purple-300 hover:scale-105 transition-transform w-full md:w-auto">
                 Copy Address
               </Button>
             </div>
@@ -235,7 +241,7 @@ export default function Whitepaper() {
       </section>
 
       {/* Content Sections */}
-      <section className="py-12">
+      <section className="py-8 sm:py-12">
         <div className="container mx-auto px-4 max-w-5xl">
           {sections.map((section, index) => (
             <WhitepaperSection key={section.id} section={section} index={index} />
@@ -244,22 +250,22 @@ export default function Whitepaper() {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="glass-effect p-12 rounded-3xl text-center border-2 border-purple-500/30"
+            className="glass-effect p-8 sm:p-12 rounded-3xl text-center border-2 border-purple-500/30"
           >
-            <h3 className="text-4xl font-black mb-4 gradient-text">Ready to Join the Revolution?</h3>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <h3 className="text-3xl sm:text-4xl font-black mb-4 gradient-text">Ready to Join the Revolution?</h3>
+            <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Think Smart. Pump Hard. Meme Forever.
             </p>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold text-lg px-8 py-6"
+              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 hover:scale-105 transition-transform w-full sm:w-auto"
               onClick={() => navigate('/')}
             >
               <Rocket className="mr-2 w-5 h-5" />
@@ -274,125 +280,177 @@ export default function Whitepaper() {
 
 function WhitepaperSection({ section, index }: { section: Section; index: number }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="mb-16"
+      transition={{ duration: 0.8, delay: index * 0.05 }}
+      className="mb-12 sm:mb-16"
     >
-      <Card className="glass-effect border-none overflow-hidden">
-        <div className={`h-2 bg-gradient-to-r ${section.gradient}`} />
-        <CardHeader>
-          <div className="flex items-start gap-4">
-            <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${section.gradient} flex items-center justify-center flex-shrink-0`}>
-              <section.icon className="w-8 h-8 text-white" />
-            </div>
+      <Card className="glass-effect border-none overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+        <motion.div 
+          className={`h-2 bg-gradient-to-r ${section.gradient}`}
+          initial={{ scaleX: 0 }}
+          animate={isInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.8, delay: index * 0.05 + 0.2 }}
+        />
+        <CardHeader className="p-4 sm:p-6">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <motion.div 
+              className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${section.gradient} flex items-center justify-center flex-shrink-0`}
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <section.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+            </motion.div>
             <div className="flex-1">
-              <div className="text-sm text-purple-400 mb-2">Section {section.id}</div>
-              <CardTitle className="text-3xl font-black mb-4">{section.title}</CardTitle>
+              <div className="text-xs sm:text-sm text-purple-400 mb-2">Section {section.id}</div>
+              <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-black mb-4">{section.title}</CardTitle>
             </div>
           </div>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-6 p-4 sm:p-6">
           {section.content?.map((paragraph: string, i: number) => (
-            <p key={i} className="text-gray-300 leading-relaxed text-lg">
+            <motion.p 
+              key={i} 
+              className="text-gray-300 leading-relaxed text-base sm:text-lg"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
               {paragraph}
-            </p>
+            </motion.p>
           ))}
 
           {section.features && (
-            <div className="grid md:grid-cols-2 gap-4 mt-6">
+            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mt-6">
               {section.features.map((feature: Feature, i: number) => (
-                <div key={i} className="glass-effect p-4 rounded-lg">
+                <motion.div 
+                  key={i} 
+                  className="glass-effect p-4 rounded-lg hover:scale-105 transition-transform"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                >
                   <div className="text-2xl mb-2">{feature.icon}</div>
-                  <h4 className="font-bold mb-2">{feature.title}</h4>
-                  <p className="text-sm text-gray-400">{feature.desc}</p>
-                </div>
+                  <h4 className="font-bold mb-2 text-sm sm:text-base">{feature.title}</h4>
+                  <p className="text-xs sm:text-sm text-gray-400">{feature.desc}</p>
+                </motion.div>
               ))}
             </div>
           )}
 
           {section.utilities && (
-            <div className="space-y-4 mt-6">
+            <div className="space-y-3 sm:space-y-4 mt-6">
               {section.utilities.map((utility: Utility, i: number) => (
-                <div key={i} className="glass-effect p-6 rounded-lg">
-                  <h4 className="text-xl font-bold mb-2 text-purple-300">{i + 1}. {utility.title}</h4>
-                  <p className="text-gray-300 leading-relaxed">{utility.desc}</p>
-                </div>
+                <motion.div 
+                  key={i} 
+                  className="glass-effect p-4 sm:p-6 rounded-lg hover:scale-[1.02] transition-transform"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                >
+                  <h4 className="text-lg sm:text-xl font-bold mb-2 text-purple-300">{i + 1}. {utility.title}</h4>
+                  <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{utility.desc}</p>
+                </motion.div>
               ))}
             </div>
           )}
 
           {section.tokenomics && (
-            <div className="space-y-4 mt-6">
+            <div className="space-y-3 sm:space-y-4 mt-6">
               <div className="glass-effect p-4 rounded-lg mb-4">
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-sm text-gray-400 mb-1">Token Symbol</div>
-                    <div className="text-xl font-black gradient-text">CPM</div>
-                  </div>
-                  <div>
-                    <div className="text-sm text-gray-400 mb-1">Network</div>
-                    <div className="text-xl font-black gradient-text">ETH & BASE</div>
-                  </div>
-                  <div>
-                    <div className="text-sm text-gray-400 mb-1">Total Supply</div>
-                    <div className="text-xl font-black gradient-text">400B</div>
-                  </div>
+                <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center">
+                  {[
+                    { label: 'Token Symbol', value: 'CPM' },
+                    { label: 'Network', value: 'ETH & BASE' },
+                    { label: 'Total Supply', value: '400B' },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ duration: 0.4, delay: i * 0.1 }}
+                    >
+                      <div className="text-xs sm:text-sm text-gray-400 mb-1">{item.label}</div>
+                      <div className="text-base sm:text-xl font-black gradient-text">{item.value}</div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
               {section.tokenomics.map((item: TokenomicsItem, i: number) => (
-                <div key={i} className="glass-effect p-6 rounded-lg">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-xl font-bold text-purple-300">{item.category}</h4>
-                    <div className="text-right">
-                      <div className="text-3xl font-black gradient-text">{item.percentage}%</div>
-                      <div className="text-sm text-gray-400">{item.amount} CPM</div>
+                <motion.div 
+                  key={i} 
+                  className="glass-effect p-4 sm:p-6 rounded-lg hover:scale-[1.02] transition-transform"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                >
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 gap-2">
+                    <h4 className="text-lg sm:text-xl font-bold text-purple-300">{item.category}</h4>
+                    <div className="text-left sm:text-right">
+                      <div className="text-2xl sm:text-3xl font-black gradient-text">{item.percentage}%</div>
+                      <div className="text-xs sm:text-sm text-gray-400">{item.amount} CPM</div>
                     </div>
                   </div>
-                  <p className="text-gray-300">{item.desc}</p>
-                  <div className="mt-3 h-2 bg-gray-800 rounded-full overflow-hidden">
+                  <p className="text-gray-300 text-sm sm:text-base mb-3">{item.desc}</p>
+                  <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={isInView ? { width: `${item.percentage}%` } : {}}
-                      transition={{ duration: 1, delay: i * 0.1 }}
+                      transition={{ duration: 1, delay: i * 0.1 + 0.3 }}
                       className="h-full bg-gradient-to-r from-purple-500 to-blue-500"
                     />
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
 
           {section.team && (
-            <div className="grid md:grid-cols-2 gap-4 mt-6">
+            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mt-6">
               {section.team.map((member: TeamMember, i: number) => (
-                <div key={i} className="glass-effect p-6 rounded-lg">
-                  <h4 className="text-xl font-bold mb-2">{member.name}</h4>
-                  <div className="text-purple-400 font-semibold mb-1">{member.role}</div>
-                  <div className="text-sm text-gray-400 mb-3">🇺🇸 {member.nationality}</div>
-                  <p className="text-sm text-gray-300">{member.bio}</p>
-                </div>
+                <motion.div 
+                  key={i} 
+                  className="glass-effect p-4 sm:p-6 rounded-lg hover:scale-105 transition-transform"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                >
+                  <h4 className="text-lg sm:text-xl font-bold mb-2">{member.name}</h4>
+                  <div className="text-purple-400 font-semibold mb-1 text-sm sm:text-base">{member.role}</div>
+                  <div className="text-xs sm:text-sm text-gray-400 mb-3">🇺🇸 {member.nationality}</div>
+                  <p className="text-xs sm:text-sm text-gray-300">{member.bio}</p>
+                </motion.div>
               ))}
             </div>
           )}
 
           {section.roadmap && (
-            <div className="space-y-4 mt-6">
+            <div className="space-y-3 sm:space-y-4 mt-6">
               {section.roadmap.map((item: RoadmapItem, i: number) => (
-                <div key={i} className="glass-effect p-6 rounded-lg flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0 font-black text-white">
+                <motion.div 
+                  key={i} 
+                  className="glass-effect p-4 sm:p-6 rounded-lg flex items-start gap-3 sm:gap-4 hover:scale-[1.02] transition-transform"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                >
+                  <motion.div 
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0 font-black text-white text-sm sm:text-base"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
                     Q{i + 1}
-                  </div>
+                  </motion.div>
                   <div className="flex-1">
-                    <h4 className="text-lg font-bold text-purple-300 mb-2">{item.quarter}</h4>
-                    <p className="text-gray-300">{item.milestone}</p>
+                    <h4 className="text-base sm:text-lg font-bold text-purple-300 mb-2">{item.quarter}</h4>
+                    <p className="text-gray-300 text-sm sm:text-base">{item.milestone}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
