@@ -17,7 +17,7 @@ export default function Footer() {
       { label: 'Roadmap', href: '#roadmap' },
     ],
     resources: [
-      { label: 'Whitepaper', href: '/https://cryptopump-meme.com/whitepaper' },
+      { label: 'Whitepaper', href: 'https://www.cryptopump-meme.com/whitepaper' },
       { label: 'Documentation', href: '#' },
       { label: 'Blog', href: '#' },
       { label: 'FAQ', href: '#' },
