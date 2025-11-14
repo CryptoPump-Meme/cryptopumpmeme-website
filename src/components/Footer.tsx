@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Twitter, Send, MessageCircle, Github } from 'lucide-react';
+import { Twitter, Send, Github, TrendingUp } from 'lucide-react';
 
 export default function Footer() {
   const socialLinks = [
-    { icon: Twitter, label: 'Twitter', href: '#', gradient: 'from-blue-400 to-blue-600' },
-    { icon: Send, label: 'Telegram', href: '#', gradient: 'from-blue-500 to-cyan-500' },
-    { icon: MessageCircle, label: 'Discord', href: '#', gradient: 'from-purple-500 to-pink-500' },
-    { icon: Github, label: 'GitHub', href: '#', gradient: 'from-gray-600 to-gray-800' },
+    { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/cryptopumpmeme', gradient: 'from-blue-400 to-blue-600' },
+    { icon: Send, label: 'Telegram', href: 'https://t.me/cryptopumpmeme', gradient: 'from-blue-500 to-cyan-500' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/cryptopumpmeme', gradient: 'from-gray-600 to-gray-800' },
+    { icon: TrendingUp, label: 'CoinMarketCap', href: 'https://coinmarketcap.com', gradient: 'from-green-500 to-emerald-600' },
   ];
 
   const links = {
@@ -17,7 +17,7 @@ export default function Footer() {
       { label: 'Roadmap', href: '#roadmap' },
     ],
     resources: [
-      { label: 'Whitepaper', href: '#whitepaper' },
+      { label: 'Whitepaper', href: '/whitepaper' },
       { label: 'Documentation', href: '#' },
       { label: 'Blog', href: '#' },
       { label: 'FAQ', href: '#' },
@@ -49,14 +49,16 @@ export default function Footer() {
               <p className="text-gray-300 mb-6 leading-relaxed">
                 The Smart Pump Engine that unifies the power of memes, AI, and blockchain to create data-driven, community-powered digital pump waves.
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social, i) => (
                   <motion.a
                     key={i}
                     href={social.href}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-12 h-12 rounded-full bg-gradient-to-br ${social.gradient} flex items-center justify-center hover:shadow-lg transition-shadow`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={`w-12 h-12 rounded-full bg-gradient-to-br ${social.gradient} flex items-center justify-center hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300`}
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5 text-white" />
@@ -77,7 +79,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {links.product.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-gray-400 hover:text-purple-400 transition-colors">
+                  <a href={link.href} className="text-gray-400 hover:text-purple-400 transition-colors hover:translate-x-1 inline-block">
                     {link.label}
                   </a>
                 </li>
@@ -95,7 +97,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {links.resources.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-gray-400 hover:text-purple-400 transition-colors">
+                  <a href={link.href} className="text-gray-400 hover:text-purple-400 transition-colors hover:translate-x-1 inline-block">
                     {link.label}
                   </a>
                 </li>
@@ -113,7 +115,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {links.legal.map((link, i) => (
                 <li key={i}>
-                  <a href={link.href} className="text-gray-400 hover:text-purple-400 transition-colors">
+                  <a href={link.href} className="text-gray-400 hover:text-purple-400 transition-colors hover:translate-x-1 inline-block">
                     {link.label}
                   </a>
                 </li>
