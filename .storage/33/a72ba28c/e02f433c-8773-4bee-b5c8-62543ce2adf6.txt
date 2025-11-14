@@ -1,0 +1,47 @@
+$ cd /workspace/shadcn-ui
+$ cd /workspace/shadcn-ui && pnpm add framer-motion lucide-react
+
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 261, reused 261, downloaded 0, added 0
+ WARN  1 deprecated subdependencies found: rollup-plugin-terser@7.0.2
+Already up to date
+Progress: resolved 501, reused 427, downloaded 0, added 0, done
+
+Done in 3.4s
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 2029 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.20 kB │ gzip:   0.58 kB
+dist/assets/index-DtbufFdj.css   69.84 kB │ gzip:  12.14 kB
+dist/assets/index-D6u5xC85.js   486.71 kB │ gzip: 151.49 kB
+✓ built in 4.84s
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+/workspace/shadcn-ui/src/pages/Whitepaper.tsx
+  248:59  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  282:47  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  294:48  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  321:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  346:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  359:43  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 6 problems (6 errors, 0 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.
