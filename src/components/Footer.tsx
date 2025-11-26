@@ -3,7 +3,7 @@ import { Twitter, Send, Github, TrendingUp } from 'lucide-react';
 
 export default function Footer() {
   const socialLinks = [
-    { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/cryptopumpmeme', gradient: 'from-blue-400 to-blue-600' },
+    { icon: Twitter, label: 'Twitter', href: 'https://x.com/cryptopumpm3me', gradient: 'from-blue-400 to-blue-600' },
     { icon: Send, label: 'Telegram', href: 'https://t.me/cryptopumpmemeofficial', gradient: 'from-blue-500 to-cyan-500' },
     { icon: Github, label: 'GitHub', href: 'https://github.com/CryptoPump-Meme', gradient: 'from-gray-600 to-gray-800' },
     { icon: TrendingUp, label: 'CoinMarketCap', href: 'https://coinmarketcap.com', gradient: 'from-green-500 to-emerald-600' },
