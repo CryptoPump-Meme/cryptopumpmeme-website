@@ -230,7 +230,7 @@ export default function Whitepaper() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="w-full md:w-auto text-center md:text-left">
                 <div className="text-xs sm:text-sm text-gray-400 mb-1">Contract Address (ETH + BASE)</div>
-                <div className="text-sm sm:text-lg font-mono text-purple-300 break-all">0x2db4c12c7c7224a3655b5a2945c0128a27e76bfa</div>
+                <div className="text-sm sm:text-lg font-mono text-purple-300 break-all">0x0b873b3214c76bb29fc4ce164497b88a5b6e67f6</div>
               </div>
               <Button variant="outline" className="border-purple-500 text-purple-300 hover:scale-105 transition-transform w-full md:w-auto">
                 Copy Address
